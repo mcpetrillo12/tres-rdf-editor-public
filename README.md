@@ -1,12 +1,8 @@
-# TRèS - Triple Store RDF Editor Suite
-
-![TRèS](static/icon.png)
-
 **Platform-Independent RDF Data Management for the Modern Semantic Web**
 
 TRèS is a comprehensive, enterprise-grade RDF (Resource Description Framework) editor built with Rust and eGUI. Designed to be completely independent of any specific graph database platform, TRèS empowers data engineers, knowledge architects, and semantic web practitioners with a unified interface for their day-to-day graph data operations.
 
-**Version 2.9.6** - Licensed under Apache License 2.0
+**Version 2.9.8** - Licensed under Apache License 2.0
 
 ## Why TRèS?
 
@@ -32,116 +28,104 @@ Every feature in TRèS is designed with the practicing professional in mind:
 - Export formats that work with your existing toolchain
 - Audit trails that satisfy compliance requirements
 
-## New in v2.9.6
+See [CHANGELOG.md](CHANGELOG.md) for release history.
 
-### Spreadsheet Import — Native Rust RML-Subset Engine
-- **RML-Subset Mapping**: New backend engine translates spreadsheet rows (CSV/XLSX) into RDF triples using a native Rust implementation of an RML-compatible mapping subset — no external RML processor required
-- **Phase 2 Backend**: Full pipeline from source file to validated graph, including typed literal coercion, URI template expansion, language tag handling, and join references across multiple logical sources
-- **Load-Rule Enforcement**: Imports now enforce VDB loading rules, rejecting triples that would violate domain/range constraints or create orphan nodes before anything is written to the triple store
+## Key Features
 
-### CLI Tools for Automation & CI
-- **`tres-import`**: Standalone binary for running spreadsheet imports from the command line — ideal for scripted data loads, batch conversions, and integration into CI pipelines. See [CLI Tools Reference](Documentation/public/CLI_TOOLS.md)
-- **`tres-validate`**: Standalone RDF validation binary that runs the same validator used inside TReS — point it at a Turtle/N-Triples/N-Quads file to get exit-code-friendly pass/fail output suitable for pre-commit hooks and CI checks
+### Enterprise Database Management
+- **Multi-Platform Support**: Native support for Stardog, RDFox, Apache Jena Fuseki, GraphDB, and AllegroGraph
+- **Environment Management**: Support for Dev/QA/Staging/Production endpoints per profile
+- **Connection Profiles**: Save and quickly switch between database configurations
+- **Connection Pooling**: Efficient resource management with automatic retry logic
+- **Audit & Compliance**: Complete change tracking with user attribution and rollback capabilities
+- **Snapshot Management**: Automatic snapshots before destructive operations with configurable retention
+- **External Change Detection**: Auto-detect when database is modified externally with smart VDB refresh
 
-## Documentation
+### Advanced SPARQL Interface
+- **Three Modes**: Query, Browse, and Update modes with syntax highlighting and validation
+- **Multi-Tab Query Editor**: Work with multiple queries simultaneously
+- **Query Library**: Save, organize, and share query collections
+- **Template System**: Pre-built queries for common RDF operations
+- **Results Export**: Multiple format support (CSV, JSON, TSV, Turtle, N-Triples)
+- **Query History**: Complete audit trail of all executed queries
+- **Browse Mode**: Visual exploration of classes, properties, instances, and attributes
+- **External Editor Integration**: Round-trip editing with BBEdit, VS Code, and other editors
+- **Send to Viz**: Push query or browse results directly to graph visualization
 
-- **[Getting Started](Documentation/public/GETTING_STARTED.md)**: Quick start guide for new users
-- **[Operations Guide](Documentation/public/OPERATIONS.md)**: Complete user guide with tutorials and best practices
-- **[Vocabulary Guide](Documentation/public/VOCABULARY_GUIDE.md)**: Managing SKOS vocabularies and taxonomies
-- **[Ollama AI Guide](Documentation/public/OLLAMA_TRAINING_GUIDE.md)**: AI-powered ontology analysis setup
-- **[Federated Queries](Documentation/public/FEDERATED_QUERIES_GUIDE.md)**: Cross-database query federation guide
+### Interactive Graph Visualization
+- **VDB-Powered Intelligence**: Vector database classifies nodes as hubs, bridges, satellites, or terminators for intelligent layout
+- **Dual Layout Modes**: Toggle between VDB-informed and degree-based layouts
+- **11 Layout Rules**: Production-quality node placement with no overlaps, crossing minimization, and space optimization
+- **Animated Expansion**: Stem-and-flower bloom animation with sequential timing
+- **Search Integration**: Type-ahead search with chicklet-based selection and instant canvas placement
+- **Path Finding**: Discover shortest paths between any two nodes with SPARQL query display
+- **Deterministic Colors**: 12-color hand-picked palette with TopClass color persistence across sessions
+- **SubClass Color Hierarchy**: Lighter shades based on VDB hierarchy depth
+- **Interactive Controls**: Pan, zoom, fullscreen, drag, multi-select, expand, expand all, stop expansion
+- **Details Panel**: Collapsible sections showing URI, metadata, relationships, attributes, instances, and literals
+- **Filters**: Toggle Classes, Instances, rdf:type relationships, and subClassOf relationships
 
-## Quick Links
+### Vocabulary & Taxonomy Management
+- **SKOS Browser**: Navigate and edit SKOS concept schemes and hierarchies
+- **Taxonomy Groups**: Local file-based organization of concept schemes with ordered collections
+- **Labels & Descriptions**: Preferred/alternative labels, definitions, and scope notes with language support
+- **Documentation Export**: HTML, Markdown, Word, CSV, JSON-LD formats
+- **SKOS Export**: Native SKOS/Turtle export with proper semantic markup
+- **Validation**: Orphan concepts, duplicate labels, and structural issue detection
+- **Taxonomist-First Design**: Clean, polished interface designed for non-technical vocabulary managers
 
-- **Current Version**: v2.9.6
-- **All Releases**: [github.com/mcpetrillo12/tres-rdf-editor-public/releases](https://github.com/mcpetrillo12/tres-rdf-editor-public/releases)
-- **v2.9.6 Downloads** (version-pinned):
-  - Windows: [tres-v2.9.6-windows-x64.exe](https://github.com/mcpetrillo12/tres-rdf-editor-public/releases/download/v2.9.6/tres-v2.9.6-windows-x64.exe)
-  - macOS (signed & notarized, recommended): [TRES-v2.9.6-macos.dmg](https://github.com/mcpetrillo12/tres-rdf-editor-public/releases/download/v2.9.6/TRES-v2.9.6-macos.dmg)
-  - macOS (binary only): [tres-v2.9.6-macos](https://github.com/mcpetrillo12/tres-rdf-editor-public/releases/download/v2.9.6/tres-v2.9.6-macos)
-  - Linux: [tres-v2.9.6-linux-x64](https://github.com/mcpetrillo12/tres-rdf-editor-public/releases/download/v2.9.6/tres-v2.9.6-linux-x64)
-  - SHA256 Checksums: [checksums.txt](https://github.com/mcpetrillo12/tres-rdf-editor-public/releases/download/v2.9.6/checksums.txt)
-- **Support**: info@taurusystems.com
-- **Contributing**: See Developer Guide documentation
+### Security & Compliance
+- **Encrypted Credentials**: AES-256-GCM encryption for all database passwords
+- **Zero-Configuration Security**: Automatic encryption using system-specific keys
+- **Transparent Migration**: Plain text passwords automatically encrypted on first use
+- **Query Validation**: SPARQL injection prevention with comprehensive input sanitization
+- **Audit Logging**: Track all database operations with timestamps and user attribution
+- **Rollback Generation**: Automatically generate queries to undo changes
+- **Import Safety**: All-or-nothing imports with validation before graph clearing
 
-## Supported Platforms
+### Multilingual Support
+- **Language Preferences**: 11 presets plus custom input (ISO 639-1 codes)
+- **Unicode Rendering**: Embedded fonts for Arabic, Japanese, Chinese, Latin, Greek, and Cyrillic
+- **Smart Fallback**: Preferred language, then English, then untagged, then first available
+- **SPARQL Language Filtering**: Built-in utilities to inject language preferences into queries
 
-### Enterprise RDF Databases
+### Plugin System & Intelligence Layer
+- **Integrated Vector Database**: In-memory VDB with automatic persistence per connection profile
+- **Graph-Aware Indexing**: Canonical URI handling with separate ID namespaces per graph
+- **Semantic Search**: Entity and relationship embeddings for intelligent traversal
+- **Plugin Manager**: Browse and install plugins through intuitive UI
+- **Available Plugins**:
+  - **Embedded Fuseki**: Local RDF database for development and testing
+  - **Tool Classification**: OWL rule-based reasoning with vector acceleration
+  - **Spatial Reasoning**: Geospatial data analysis and visualization
+  - **Ontology Training**: Train language models on your ontologies via Ollama bridge
+- **AI-Powered Analysis**: Ollama integration for ontology summarization, validation, and NL-to-SPARQL training
 
-| Platform | Query Endpoint | Update Endpoint | Authentication | Special Features |
-|----------|---------------|-----------------|----------------|------------------|
-| **Stardog** | `/query` | `/update` | Basic Auth | Reasoning, Virtual Graphs |
-| **RDFox** | `/sparql` | `/sparql` | API Key | Incremental Reasoning |
-| **Fuseki** | `/query` | `/update` | Optional | Embedded Server Support |
-| **GraphDB** | `/repositories/{repo}` | `/statements` | Token/Basic | Full-text Search |
-| **AllegroGraph** | `/repositories/{repo}` | `/statements` | Basic Auth | Geospatial, Multi-model |
+## Installation
 
-### Platform Intelligence
+### Pre-built Binaries
+Pre-built binaries are available for macOS, Windows, and Linux platforms.
 
-TRèS automatically adapts to each platform's specific requirements:
-- **Default Graph Handling**: Platform-specific default graph URIs
-- **Query Formatting**: Optimized query syntax for each platform
-- **Full-Text Search**: Platform-specific FTS index discovery and query generation
-- **Connection Management**: Platform-appropriate connection pooling
-- **Error Handling**: Intelligent error interpretation and recovery
+### Build from Source
+```bash
+# Clone or extract source
+cd tres
 
-## Architecture
+# Build release version
+./build.sh release
 
-### Technology Stack
-- **Framework**: eGUI (immediate mode GUI) for maximum performance
-- **Language**: Rust for safety, speed, and reliability
-- **Async Runtime**: Tokio for concurrent operations
-- **HTTP Client**: reqwest with connection pooling
-- **Intelligence Layer**: In-memory vector database with semantic indexing and persistence
-- **Graph Engine**: StateManager-based architecture with topology pathfinding
-- **RDF Parsing**: rio for standard-compliant RDF I/O
+# Run the application
+./target/release/tres
 
-### Design Principles
-- **Native Performance**: Direct GPU rendering, no web overhead
-- **Platform Agnostic**: Works with any SPARQL 1.1 compliant endpoint
-- **Privacy First**: All data stays local, no telemetry
-- **VDB as Authority**: Single source of truth for node/edge IDs and type classification
-- **Extensible**: Modular architecture for easy platform additions
-- **Reliable**: Comprehensive error handling and recovery (1,375 tests)
+# Run tests (1,375 tests)
+./build.sh test
 
-## Contributing
+# Build macOS DMG installer (macOS only)
+./build.sh dmg
+```
 
-We welcome contributions! Areas of interest:
-- Additional RDF platform support
-- Enhanced visualization features
-- Query optimization tools
-- Documentation improvements
-- Internationalization
-- Extension development (see [Extension Guide](extensions/README.md))
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## License
-
-Apache License 2.0 - see [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-- **Rust Community**: For excellent libraries and tooling
-- **W3C RDF Working Group**: For SPARQL and RDF standards
-- **Database Vendors**: For advancing the semantic web ecosystem
-- **Contributors**: Everyone who has helped improve TRèS
-
-## The TRèS Philosophy
-
-TRèS believes that your tools should adapt to your workflow, not the other way around. Built on the principle that RDF professionals deserve a tool that:
-
-- **Respects your expertise** by providing powerful features without unnecessary complexity
-- **Values your time** with instant responses and efficient workflows
-- **Travels with you** across different projects, platforms, and organizations
-- **Grows with you** as the semantic web ecosystem evolves
-
-Whether you're exploring a new dataset, debugging a complex query, presenting findings to stakeholders, or building the next generation of knowledge graphs, TRèS is the reliable companion that makes your RDF work more productive and enjoyable.
-
----
-
-**TRèS** - The platform-independent RDF editor that puts practitioners first.
-
-*Built for data engineers, knowledge architects, and semantic web practitioners who need tools that work as hard as they do.*
-
-*Created by Matthew C. Petrillo*
+### System Requirements
+- **Rust**: 1.94+ (stable toolchain)
+- **macOS**: 12.0+ (Apple Silicon and Intel)
+- **Linux**: GTK3 development libraries required
+- **Windows**: MSVC toolchain
