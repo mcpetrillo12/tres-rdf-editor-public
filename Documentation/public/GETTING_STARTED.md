@@ -117,15 +117,6 @@ To enable:
 3. Start `ollama serve`
 4. TRèS will detect it automatically
 
----
-
-## Next Steps
-
-- **[OPERATIONS.md](OPERATIONS.md)** - Detailed feature documentation
-- **[OLLAMA_TRAINING_GUIDE.md](OLLAMA_TRAINING_GUIDE.md)** - AI integration guide
-- **[FEDERATED_QUERIES_GUIDE.md](FEDERATED_QUERIES_GUIDE.md)** - Cross-database queries
-
----
 
 ## Getting Help
 
