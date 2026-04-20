@@ -4,6 +4,8 @@ TRèS is a comprehensive, enterprise-grade RDF (Resource Description Framework) 
 
 **Version 2.9.8** - Licensed under Apache License 2.0
 
+**[Getting Started](Documentation/public/GETTING_STARTED.md)**: Quick start guide for new users
+
 ## Why TRèS?
 
 ### True Platform Independence
